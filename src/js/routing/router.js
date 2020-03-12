@@ -5,7 +5,7 @@ import {
     fixWindow,
 } from "../helpers.js";
 import { doNotSpeak } from "../songs";
-import PAGES from './pages';
+import PAGES from "./pages";
 
 export default class Router {
     constructor(routes) {
@@ -36,7 +36,9 @@ export default class Router {
             .then(response => response.text())
             .then(text => (this.rootElem.innerHTML = text));
 
-        fixWindow(htmlName);
+        if (htmlName !== PAGES.ABOUT_US) {
+            fixWindow(htmlName);
+        }
 
         if (htmlName === PAGES.MAIN) {
             let slider = initSlider(document.querySelector(".slider"));
